@@ -11,6 +11,7 @@
  *       value: 'which car??'
  * are switch action creators?
  */
+// import { act } from "react-dom/test-utils";
 import { combineReducers } from "redux";
 
 const cars = (state = [], action) => {
@@ -18,7 +19,10 @@ const cars = (state = [], action) => {
     switch(action.type) {
 
         case  "ADD_CAR" : 
-            return action.value
+            // to add at the end
+            // return [...state, action.value]
+            // to add at the beggining of list
+            return [action.value, ...state]
 
         case "REMOVE_CAR" : 
             // spread state to create copy of state

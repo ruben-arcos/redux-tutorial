@@ -1,11 +1,11 @@
 // an action is an object
 // we pass objects to reducers
 
-export const addCar = () => {
+export const addCar = (car) => {
     return {
         type: 'ADD_CAR',
         // sometimes value is called payload
-        value: "Ford"
+        value: car
     }
 }
 
