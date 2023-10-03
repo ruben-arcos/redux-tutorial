@@ -16,5 +16,21 @@ export const removeCar = (index) => {
     }
 }
 
+
+export const addFavCountries = (favCountries) => {
+    return {
+        type: 'ADD_FAVCOUNTRIES',
+        // sometimes value is called payload
+        value: favCountries
+    }
+}
+
+export const removeFavCountries = (index) => {
+    return {
+        type: 'REMOVE_FAVCOUNTRIES',
+        value: index
+    }
+}
+
 // Rule!
 // *Object with keys: type and value

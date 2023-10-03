@@ -40,6 +40,32 @@ const cars = (state = [], action) => {
     }
 }
 
+const favCountries = (state = [], action) => {
+    // switch takes some type of condition
+    switch(action.type) {
+
+        case  "ADD_COUNTRY" : 
+            // to add at the end
+            // return [...state, action.value]
+            // to add at the beggining of list
+            return [action.value, ...state]
+
+        case "DELETE_COUNTRY" : 
+            // spread state to create copy of state
+            // otherwise this will allow this reducer 
+            // to manipulate states. this will violate
+            // the rules of mutability
+            let newState = [...state]
+            // splice out what needs to be removed
+            // use action since in actions.js we passed index as value
+            newState.splice(action.value, 1)
+            return newState
+
+        default : 
+            return state;
+    }
+}
+
 // give default param here
 const hello = (state = null) => state
 const fName = (state = null) => state
@@ -47,7 +73,7 @@ const fName = (state = null) => state
 const user = (state = null) => state
 const cats = (state = null) => state
 const animals = (state = null) => state
-const favCountries = (state = null) => state
+
 
 export default combineReducers({hello, cars, user, fName, cats, animals, favCountries})
 

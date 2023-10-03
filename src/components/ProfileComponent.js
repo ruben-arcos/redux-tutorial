@@ -6,25 +6,44 @@ class ProfileComponent extends Component {
 
     this.state = {
       newCar: "",
+      newFavCountries: ""
     };
   }
 
   handleChange = (e) => {
     this.setState({
-        newCar: e.target.value
-    })
-  }
+      newCar: e.target.value,
+    });
+  };
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // function to do something
-    this.props.addCar(this.state.newCar)
+    this.props.addCar(this.state.newCar);
 
     this.setState({
-        newCar: ""
-    })
-  }
+      newCar: "",
+    });
+  };
+
+//   fav countries handles
+handleCountryChange = (e) => {
+    this.setState({
+      newFavCountries: e.target.value,
+    });
+  };
+
+  handleCountrySubmit = (e) => {
+    e.preventDefault();
+
+    // function to do something
+    this.props.addFavCountries(this.state.newFavCountries);
+
+    this.setState({
+      newCar: "",
+    });
+  };
 
   render() {
     return (
@@ -35,11 +54,25 @@ class ProfileComponent extends Component {
           <input
             type="text"
             value={this.state.newCar}
-            onChange={(e) => this.handleChange(e)} />
+            onChange={(e) => this.handleChange(e)}
+          />
           <input type="submit" />
         </form>
         {this.props.cars.map((car, index) => {
           return <h2 key={index}>{car}</h2>;
+        })}
+    
+        <h1>Add a new country</h1>
+        <form onSubmit={(e) => this.handleCountrySubmit(e)}>
+          <input
+            type="text"
+            value={this.state.newFavCountries}
+            onChange={(e) => this.handleCountryChange(e)}
+          />
+          <input type="submit" />
+        </form>
+        {this.props.favCountries.map((favCountries, index) => {
+          return <h2 key={index}>{favCountries}</h2>;
         })}
       </div>
     );
