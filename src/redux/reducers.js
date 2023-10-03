@@ -44,13 +44,13 @@ const favCountries = (state = [], action) => {
     // switch takes some type of condition
     switch(action.type) {
 
-        case  "ADD_COUNTRY" : 
+        case  "ADD_FAVCOUNTRIES" : 
             // to add at the end
-            // return [...state, action.value]
+            return [...state, action.value]
             // to add at the beggining of list
-            return [action.value, ...state]
+            // return [action.value, ...state]
 
-        case "DELETE_COUNTRY" : 
+        case "DELETE_FAVCOUNTRIES" : 
             // spread state to create copy of state
             // otherwise this will allow this reducer 
             // to manipulate states. this will violate
