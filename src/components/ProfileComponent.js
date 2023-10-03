@@ -41,7 +41,8 @@ handleCountryChange = (e) => {
     this.props.addFavCountries(this.state.newFavCountries);
 
     this.setState({
-      newCar: "",
+        // Clear the newFavCountries state
+      newFavCountries: "",
     });
   };
 
